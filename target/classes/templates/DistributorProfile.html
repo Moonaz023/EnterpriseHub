@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+	<link rel="stylesheet" th:href="@{/css/editForm.css}" />
+	<link rel="stylesheet" th:href="@{/css/distributorProfile.css}" />
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- DataTables CSS and JS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<body>
+	<div th:replace="~{Base :: header}"></div>
+	<main id="main">
+		<div th:replace="~{Base :: sidebar}"></div>
+
+
+		<div id="editFormContainer" style="display: none;"></div>
+
+
+		<div class="container">
+
+			<div class="profile-container">
+
+				<div class="profile-details">
+					<h2 th:text="${distributorHistory.distributor.name}">Distributor Name</h2>
+					
+					<p><strong>Address:</strong> <span th:text="${distributorHistory.distributor.address}">Distributor
+							Address</span></p>
+					<p><strong>Phone:</strong> <span th:text="${distributorHistory.distributor.phone}">Distributor
+							Phone</span></p>
+					<p><strong>Email:</strong> <span th:text="${distributorHistory.distributor.email}">Distributor
+							Email</span></p>
+					<p><strong>Total Orders:</strong> <span
+							th:text="${distributorHistory.distributor.total_order}">Total Orders</span></p>
+
+				</div>
+				<div class="profile-pic">
+					<img src="/distributorDP/distributor.png" alt="Profile Picture">
+				</div>
+			</div>
+
+			<div class="product-sales">
+				<h2>Product Sales</h2>
+				<ul>
+					<li th:each="entry : ${distributorHistory.productSale}">
+						<strong>Product:</strong> <span th:text="${entry.key.name}">Product Name</span> <br>
+						<strong>Quantity Sold:</strong> <span th:text="${entry.value}">Quantity Sold</span>
+					</li>
+				</ul>
+			</div>
+
+			<div class="financial-summary">
+				<h2>Financial Summary</h2>
+				<ul>
+					<li><strong>Total Paid:</strong> <span th:text="${distributorHistory.totalPaid}">Total Paid</span>
+					</li>
+					<li><strong>Total Due:</strong> <span th:text="${distributorHistory.totalDue}">Total Due</span></li>
+				</ul>
+			</div>
+		</div>
+	</main>
+	<div th:replace="~{Base :: footer}"></div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>DamagedProduct</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+	<link rel="stylesheet" th:href="@{/css/editForm.css}" />
+
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- DataTables CSS and JS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
+</head>
+
+<body>
+	<div th:replace="~{Base :: header}"></div>
+	<main id="main">
+		<div th:replace="~{Base :: sidebar}"></div>
+
+
+
+		<div class="container">
+
+			<div id="editFormContainer" style="display: none;"></div>
+
+
+			<form id="formDamagedProduct" name="formDamagedProduct" class="product-form">
+				<div class="row">
+					<div class="col-sm-4">
+						<h4>Add Damaged Product</h4>
+
+
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Production</label>
+
+						<select class="distributor_id form-control" id="productionInput" name="productionId" required>
+							<option value="">Select production</option>
+						</select>
+
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Quantity</label>
+						<input type="number" class="form-control" name="quantity" id="inputEmail3"
+							placeholder="Damaged Quantity">
+
+
+
+						<div class="form-group">
+							<button type="button" id="insert" class="btn btn-success">Save</button>
+							<button type="button" id="cancle" class="btn btn-primary">Reset</button>
+						</div>
+
+					</div>
+
+					<div class="col-sm-8">
+						<h3>Damaged Product List</h3>
+						<br>
+						<table id="damagedProduct" class="table table-hover">
+							<thead>
+								<tr>
+
+									<th scope="col">Production date</th>
+									<th scope="col">Product</th>
+									<th scope="col">Quantity</th>
+
+
+									<!--        <th scope="col">Discount</th>-->
+
+									<th scope="col">Edit</th>
+									<th scope="col">Delete</th>
+								</tr>
+							</thead>
+							<tbody id="damagedProduct_result">
+								<!-- Table rows will be dynamically added here based on your data -->
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</form>
+
+
+
+		</div>
+	</main>
+	<div th:replace="~{Base :: footer}"></div>
+	<script src="/js/damagedProductAjaxFile.js"></script>
+</body>
+
+</html>

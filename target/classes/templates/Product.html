@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+	<link rel="stylesheet" th:href="@{/css/editForm.css}" />
+
+
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- DataTables CSS and JS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
+</head>
+
+<body>
+<div th:replace="~{Base :: header}"></div>
+	<main id="main">
+		<div th:replace="~{Base :: sidebar}"></div>
+
+	<div id="editFormContainer" style="display: none;"></div>
+
+
+	<div class="container">
+
+		<form id="formProduct" name="formProduct" class="product-form" th:action="@{/admin/saveProduct}" method="post">
+			<div class="row">
+				<div class="col-sm-4">
+					<h4>Insert Product</h4>
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Product Code</label>
+					<input type="text" class="form-control" name="productCode" id="inputEmail3"
+						placeholder="Product Code">
+
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+					<input type="text" class="form-control" name="name" id="inputEmail3" placeholder="Name">
+
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Category</label>
+					<input type="text" class="form-control" name="category" id="inputEmail3" placeholder="Category">
+
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Price</label>
+					<input type="text" class="form-control" name="price" id="inputEmail3" placeholder="Price">
+
+
+
+					<!--					<label for="inputEmail3" class="col-sm-2 col-form-label">Discount</label>-->
+					<!--					<input type="text" class="form-control" name="discount" id="inputEmail3" placeholder="Discount">-->
+
+
+
+					<div class="form-group">
+						<button type="button" id="insert" class="btn btn-success">Save</button>
+						<button type="button" class="btn btn-primary">Reset</button>
+					</div>
+
+				</div>
+
+				<div class="col-sm-8">
+					<h3>Product Record</h3>
+					<br>
+					<table id="example" class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Product Code</th>
+								<th scope="col">Name</th>
+								<th scope="col">Category</th>
+								<th scope="col">Price</th>
+
+								<!--        <th scope="col">Discount</th>-->
+
+								<th scope="col">Edit</th>
+								<th scope="col">Delete</th>
+							</tr>
+						</thead>
+						<tbody id="tableresult">
+							<!-- Table rows will be dynamically added here based on your data -->
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</form>
+
+
+
+	</div>
+</main>
+	<div th:replace="~{Base :: footer}"></div>
+	<script src="/js/productAjaxFile.js"></script>
+</body>
+
+</html>

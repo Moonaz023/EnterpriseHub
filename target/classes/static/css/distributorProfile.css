@@ -1,0 +1,54 @@
+ .profile-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-pic {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .profile-pic img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+        .profile-details {
+            flex: 3;
+            margin-left: 50px;
+        }
+        .profile-details h2 {
+            margin-top: 0;
+        }
+        .profile-details p {
+            margin: 5px 0;
+        }
+         
+        .product-sales, .financial-summary {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            float: inline-start;
+        }
+        .product-sales{
+			width: 50%;
+			margin-right: 10px;
+		}
+        .product-sales h2, .financial-summary h2 {
+            margin-top: 0;
+        }
+        .product-sales ul, .financial-summary ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .product-sales ul li, .financial-summary ul li {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }

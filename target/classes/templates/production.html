@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+	<link rel="stylesheet" th:href="@{/css/editForm.css}" />
+
+
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- DataTables CSS and JS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<div th:replace="~{Base :: header}"></div>
+	<main id="main">
+		<div th:replace="~{Base :: sidebar}"></div>
+
+	<div id="editFormContainer" style="display: none;"></div>
+
+	<div class="container">
+
+		<form id="formProduction" name="formProduction" class="product-form" th:action="@{/admin/saveProduction}"
+			method="post">
+			<div class="row">
+				<div class="col-sm-4">
+					<h4>Insert Production</h4>
+
+					<div class="form-group">
+						<label for="product">Product</label>
+						<!-- using controller method to fetch product list -->
+						<select class="form-control" id="product" name="product.id">
+							<!-- Iterate through the list of products and populate the dropdown -->
+							<option th:each="product : ${productList}" th:value="${product.id}"
+								th:text="${product.name}"></option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="dateOfProduction">Production Date</label>
+						<input type="text" class="form-control" id="dateOfProduction" name="dateOfProduction"
+							placeholder="Production Date">
+					</div>
+
+					<div class="form-group">
+						<label for="productionQuantity">Production Quantity</label>
+						<input type="text" class="form-control" id="productionQuantity" name="productionQuantity"
+							placeholder="Production Quantity">
+					</div>
+					
+					
+					
+					
+					
+					
+<!--					<div id="usedIngrediantContainer" class="form-group">-->
+<!--						<label for="product">Products:</label><br>-->
+					
+<!--						<select class="productInput halfinput" id="productInput" name="recipe[1].ingredient.id" required>-->
+<!--							<option value="">Select Type</option>-->
+<!--						</select>-->
+					
+<!--						<input type="number" class="productQuantity halfinput" name="recipe[1].ingredientQuantity" placeholder="Product Quantity">-->
+					
+<!--						<div id="usedIngrediantContainerDynamic" class="form-group"></div>-->
+<!--					</div>-->
+
+
+<div>
+	<label for="recipe">Recipe:</label>
+	<div id="recipeContainer">
+		<div class="recipeItem form-group">
+			<select type="text" class="ingredient productInput halfinput" id="productInput"  required>
+				<option value="">Select Type</option>
+			</select>
+			<input type="number" class="quantity productQuantity halfinput" placeholder="Quantity" required>
+			<i onclick="removeRecipeItem(this)" style="font-size:30px; color:red" class="fa fa-trash" aria-hidden="true"></i>
+		</div>
+		<div id="recipeContainerdynamic"></div>
+	</div>
+	<button type="button" class="add-more"  onclick="addRecipeItem()">Add More <i style="font-size:12px"
+							class="fa">&#xf067;</i></button>
+</div>
+
+
+<!--					<button type="button" class="add-more" id="addProduct">Add More <i style="font-size:12px"-->
+<!--							class="fa">&#xf067;</i></button>-->
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+					<div class="form-group">
+						<button type="submit" id="insertProduction" class="btn btn-success">Save</button>
+						<button type="reset" class="btn btn-primary">Reset</button>
+					</div>
+
+
+				</div>
+
+				<div class="col-sm-8">
+					<h3>Production Record</h3>
+					<br>
+					<table id="ProductionTable" class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Production Date</th>
+								<th scope="col">Production Quantity</th>
+								<th scope="col">Edit</th>
+								<th scope="col">Delete</th>
+							</tr>
+						</thead>
+						<tbody id="ProductionTableResult">
+							<!-- Table rows will be dynamically added here based on your data -->
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</form>
+
+
+
+	</div>
+</main>
+	<div th:replace="~{Base :: footer}"></div>
+	<script src="/js/productionAjaxFile.js"></script>
+</body>
+
+</html>
+
+
+

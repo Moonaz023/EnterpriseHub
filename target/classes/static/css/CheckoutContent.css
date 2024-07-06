@@ -1,0 +1,48 @@
+/* CSS for CheckoutContent */
+.hidden-content {
+  display: none;
+}
+.hidden {
+  display: none;
+}
+
+.CheckoutDiv{
+	background-color:#ecf0f1;
+	width: 60vw;
+	margin:auto;
+	padding: 5rem;
+	border: solid black;
+	margin-left:20%;
+	margin-top:5%;
+}
+.CheckoutContent {
+    overflow: hidden; /* Clear float */
+}
+
+.CheckoutContentLeft {
+    float: left;
+}
+
+.CheckoutContentRight {
+    float: right;
+}
+
+.formdiv{
+	display: block;
+	
+}
+
+.dueField{
+	margin-right: 5rem;
+}
+
+.btnDiv {
+    text-align: center;
+    margin-top: 20px;
+}
+#Checkoutbtn{
+	width: 200px;
+}
+#resetCheckout{
+	width: 200px;
+}
